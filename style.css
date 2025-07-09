@@ -1,20 +1,12 @@
-/* Basic Reset & Body Styles */
+/* Basic Reset & Body Styles (Existing code, no change) */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
     color: #333;
-    /* Remove background-color from body if video is covering it */
-    /* background-color: #f4f4f4; */
+    background-color: #f4f4f4;
     scroll-behavior: smooth;
-    /* Important for full-screen video: ensure body/html takes full height */
-    height: 100vh; /* Viewport height */
-    overflow-x: hidden; /* Prevent horizontal scrollbar */
-}
-
-html {
-    height: 100%;
 }
 
 .container {
@@ -24,43 +16,15 @@ html {
     padding: 0 20px;
 }
 
-/* Full-Screen Video Background */
-#full-screen-video {
-    position: fixed; /* Stays in place when scrolling */
-    right: 0;
-    bottom: 0;
-    min-width: 100%;    /* Ensures video covers at least 100% of viewport width */
-    min-height: 100%;   /* Ensures video covers at least 100% of viewport height */
-    width: auto;        /* Allows width to adjust based on height to maintain aspect ratio */
-    height: auto;       /* Allows height to adjust based on width to maintain aspect ratio */
-    z-index: -2;        /* Even lower z-index to ensure it's behind everything */
-    background-size: cover; /* Though for video element, min-width/height with auto works better */
-    opacity: 0.3;       /* Your desired opacity */
-    /* Remove object-fit: contain; if you want it to cover and crop */
-    /* If you want "contain" without cropping and accept letterboxing, use: */
-    /* object-fit: contain; */
-    /* background-color: #000; /* Fallback for letterboxing space if using contain */
-}
-
-/* Content Wrapper to sit on top of the video */
-#content-wrapper {
-    position: relative; /* Create a new stacking context */
-    z-index: -1;      /* Place it above the video (z-index -2) but below sticky header */
-    min-height: 100vh; /* Ensures content wrapper is at least full viewport height */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay to help text readability over video */
-    /* You can adjust the rgba color and opacity as needed */
-}
-
-
-/* Header & Navigation */
+/* Header & Navigation (Existing code, no change) */
 header {
-    background: #2c3e50; /* Dark blue/grey */
+    background: #2c3e50;
     color: #fff;
     padding: 1rem 0;
-    border-bottom: 3px solid #e74c3c; /* Red accent */
-    position: sticky; /* Makes header stick to top on scroll */
+    border-bottom: 3px solid #e74c3c;
+    position: sticky;
     top: 0;
-    z-index: 1000; /* Ensures header is above other content */
+    z-index: 1000;
 }
 
 header h1 {
@@ -96,35 +60,52 @@ header a:hover {
     color: #e74c3c;
 }
 
-/* Hero Section (Modified for full-screen video setup) */
+/* Hero Section (Updated) */
 .hero {
-    /* REMOVE background color from here as the video is global */
-    /* background: #34495e; */
+    background: #34495e; /* Fallback background if video doesn't load */
     color: #fff;
     text-align: center;
     padding: 100px 0;
-    opacity: 0.3;
-    margin-bottom: 20px; /* Keep margin-bottom to separate from next section */
-    /* Remove position: relative; and overflow: hidden; as video is no longer a child */
-    /* position: relative; */
-    /* overflow: hidden; */
+    margin-bottom: 20px;
+    position: relative; /* Needed for positioning the video absolutely */
+    overflow: hidden; /* Ensures video doesn't spill out */
+    height: fit-content;
+    padding-bottom: 15%;
+    padding-top: 15%;
 }
 
-/* Ensure text content is on top of the video - these styles are already in .hero and its children */
+/* Style for the video background */
+#hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0; /* Puts the video behind the content */
+    transform: translate(-50%, -50%); /* Centers the video */
+    background-size: cover;
+    opacity: 0.4; /* Adjust this value for desired opacity (e.g., 0.1 to 0.7) */
+}
+
+/* Ensure text content is on top of the video */
 .hero .container {
-    position: relative; /* Important for hero text content to be on top */
-    z-index: 1; /* Make sure it sits above the wrapper's background if needed */
+    position: relative; /* Keeps the text content above the video */
+    z-index: 1;
 }
 
 .hero h2 {
     font-size: 2.8rem;
     margin-bottom: 20px;
+    /* Optional: Add a text shadow for better readability over video */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 30px;
+    /* Optional: Add a text shadow for better readability over video */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
@@ -142,17 +123,17 @@ header a:hover {
     background: #c0392b;
 }
 
-/* Content Sections */
+/* Content Sections (Existing code, no change) */
 .content-section {
     padding: 60px 0;
     margin-bottom: 20px;
-    background: #fff; /* Keep background here for distinct content sections */
+    background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-radius: 8px;
 }
 
 .content-section:nth-of-type(even) {
-    background-color: #ecf0f1; /* Light grey for alternating sections */
+    background-color: #ecf0f1;
 }
 
 .content-section h2 {
@@ -187,7 +168,7 @@ header a:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Footer */
+/* Footer (Existing code, no change) */
 footer {
     background: #2c3e50;
     color: #fff;
@@ -200,7 +181,7 @@ footer p {
     margin: 0;
 }
 
-/* Scroll to Top Button (no change needed) */
+/* Scroll to Top Button (Existing code, no change) */
 #scrollToTopBtn {
     display: none;
     position: fixed;
@@ -223,7 +204,7 @@ footer p {
     background-color: #c0392b;
 }
 
-/* Responsive Design (Basic) (no change needed) */
+/* Responsive Design (Basic) (Existing code, no change) */
 @media (max-width: 768px) {
     header h1,
     header nav {
