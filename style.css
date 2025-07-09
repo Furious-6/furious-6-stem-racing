@@ -67,6 +67,7 @@ header a:hover {
     text-align: center;
     padding: 100px 0;
     margin-bottom: 20px;
+    
     position: relative; /* Needed for positioning the video absolutely */
     overflow: hidden; /* Ensures video doesn't spill out */
 }
@@ -82,7 +83,7 @@ header a:hover {
     object-fit: contain; /* This is the magic property! It ensures the entire video is visible. */
     object-position: center; /* Centers the video if there's empty space */
 
-    z-index: -1;
+    z-index: 0;
     transform: translate(-50%, -50%); /* Still centers the video */
     opacity: 0.3;
 }
