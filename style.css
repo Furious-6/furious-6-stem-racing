@@ -71,38 +71,37 @@ header a:hover {
     overflow: hidden; /* Ensures video doesn't spill out */
 }
 
-/* Style for the video background */
+/* Style for the video background (MODIFIED) */
 #hero-video {
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: 0; /* Puts the video behind the content */
-    transform: translate(-50%, -50%); /* Centers the video */
-    background-size: cover;
-    opacity: 0.5; /* Adjust this value for desired opacity (e.g., 0.1 to 0.7) */
+    /* Key changes for 'contain' behavior: */
+    width: 100%;   /* Make the video fill 100% of the width or height, whichever is smaller */
+    height: 100%;  /* Ensures the video tries to fit within the container */
+    object-fit: contain; /* This is the magic property! It ensures the entire video is visible. */
+    object-position: center; /* Centers the video if there's empty space */
+
+    z-index: -1;
+    transform: translate(-50%, -50%); /* Still centers the video */
+    opacity: 0.3;
 }
 
-/* Ensure text content is on top of the video */
+/* Ensure text content is on top of the video (Existing, no change) */
 .hero .container {
-    position: relative; /* Keeps the text content above the video */
+    position: relative;
     z-index: 1;
 }
 
 .hero h2 {
     font-size: 2.8rem;
     margin-bottom: 20px;
-    /* Optional: Add a text shadow for better readability over video */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 30px;
-    /* Optional: Add a text shadow for better readability over video */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
