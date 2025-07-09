@@ -1,0 +1,205 @@
+/* Basic Reset & Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden; /* Clear floats */
+    padding: 0 20px;
+}
+
+/* Header & Navigation */
+header {
+    background: #2c3e50; /* Dark blue/grey */
+    color: #fff;
+    padding: 1rem 0;
+    border-bottom: 3px solid #e74c3c; /* Red accent */
+    position: sticky; /* Makes header stick to top on scroll */
+    top: 0;
+    z-index: 1000; /* Ensures header is above other content */
+}
+
+header h1 {
+    float: left;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+header nav {
+    float: right;
+}
+
+header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header li {
+    display: inline;
+    padding: 0 15px;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #e74c3c;
+}
+
+/* Hero Section */
+.hero {
+    background: #34495e; /* Slightly lighter dark blue */
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: #e74c3c;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #c0392b;
+}
+
+/* Content Sections */
+.content-section {
+    padding: 60px 0;
+    margin-bottom: 20px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.content-section:nth-of-type(even) {
+    background-color: #ecf0f1; /* Light grey for alternating sections */
+}
+
+.content-section h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+.content-section p,
+.content-section ul {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 15px auto;
+}
+
+.content-section ul {
+    list-style-type: disc;
+    padding-left: 40px;
+}
+
+.content-section ul li {
+    margin-bottom: 8px;
+}
+
+.section-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 30px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Scroll to Top Button */
+#scrollToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 30px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #e74c3c; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px 20px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Responsive Design (Basic) */
+@media (max-width: 768px) {
+    header h1,
+    header nav {
+        float: none;
+        text-align: center;
+    }
+
+    header nav ul li {
+        display: block;
+        padding: 10px 0;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .content-section h2 {
+        font-size: 1.8rem;
+    }
+}
