@@ -16,7 +16,9 @@ body {
     padding: 0 20px;
 }
 
-/* Header & Navigation (Existing code, no change) */
+/* ... (previous CSS remains the same until header section) ... */
+
+/* Header & Navigation (MODIFIED) */
 header {
     background: #2c3e50;
     color: #fff;
@@ -25,16 +27,28 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    display: flex; /* Use flexbox for easier alignment */
+    justify-content: space-between; /* Space out title and nav/hamburger */
+    align-items: center; /* Vertically center items */
+}
+
+header .container { /* Adjust container for flexbox header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%; /* Maintain container width */
+    margin: auto;
+    padding: 0 20px;
 }
 
 header h1 {
-    float: left;
-    margin: 0;
+    margin: 0; /* Remove float: left; and margin */
     font-size: 1.8rem;
 }
 
 header nav {
-    float: right;
+    /* float: right; -- Remove float */
+    transition: transform 0.3s ease-in-out; /* For mobile menu animation */
 }
 
 header ul {
@@ -58,6 +72,91 @@ header a {
 
 header a:hover {
     color: #e74c3c;
+}
+
+/* Hamburger Menu Styles (NEW) */
+.hamburger {
+    display: none; /* Hidden by default on desktop */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative; /* For positioning bars */
+    z-index: 1100; /* Ensure it's above everything */
+}
+
+.hamburger .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Styles for when the menu is 'open' (JavaScript adds 'is-active' class) */
+.hamburger.is-active .bar:nth-child(2) {
+    opacity: 0; /* Hide middle bar */
+}
+
+.hamburger.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg); /* Rotate first bar */
+}
+
+.hamburger.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg); /* Rotate third bar */
+}
+
+
+/* Media Query for Mobile (MODIFIED) */
+@media (max-width: 768px) {
+    /* Hide desktop navigation */
+    header nav {
+        display: none; /* Hide by default on mobile */
+        /* For overlay menu: */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Full viewport height */
+        background-color: rgba(44, 62, 80, 0.95); /* Semi-transparent dark overlay */
+        flex-direction: column; /* Stack links vertically */
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%); /* Start off-screen to the right */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* When mobile nav is active (JavaScript adds this class) */
+    header nav.is-active {
+        display: flex; /* Show the menu */
+        transform: translateX(0); /* Slide into view */
+    }
+
+    header nav ul {
+        flex-direction: column; /* Stack list items vertically */
+        text-align: center;
+        padding: 0; /* Remove default padding */
+    }
+
+    header nav li {
+        display: block; /* Make list items block level */
+        padding: 15px 0; /* Add vertical padding */
+    }
+
+    header nav a {
+        font-size: 1.5rem; /* Larger font size for mobile links */
+    }
+
+    /* Show hamburger icon */
+    .hamburger {
+        display: block;
+    }
+
+    /* Adjust header for mobile */
+    header .container {
+        flex-wrap: nowrap; /* Prevent wrapping title/hamburger */
+    }
 }
 
 /* Hero Section (Updated) */
@@ -232,4 +331,16 @@ footer p {
     .content-section h2 {
         font-size: 1.8rem;
     }
+}
+
+
+
+/* for scrolling
+/* ... (Add this new style anywhere in your CSS, perhaps near the body styles) ... */
+
+/* Prevent scrolling when mobile menu is active */
+body.no-scroll,
+#content-wrapper.no-scroll {
+    overflow: hidden;
+    height: 100vh; /* Lock height to viewport */
 }
