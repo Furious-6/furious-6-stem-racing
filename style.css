@@ -86,7 +86,7 @@ header a:hover {
     z-index: 0; /* Puts the video behind the content */
     transform: translate(-50%, -50%); /* Centers the video */
     background-size: cover;
-    opacity: 0.4; /* Adjust this value for desired opacity (e.g., 0.1 to 0.7) */
+    opacity: 0.5; /* Adjust this value for desired opacity (e.g., 0.1 to 0.7) */
 }
 
 /* Ensure text content is on top of the video */
